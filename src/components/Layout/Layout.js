@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from "react";
 
-import Aux from '../../hoc/Auxiliary';
-import classes from './Layout.module.css';
+import Aux from "../../hoc/Auxiliary";
+import Toolbar from "../Navigation/Toolbar/Toolbar";
+import classes from "./Layout.module.css";
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
 const layout = (props) => (
     <Aux>
@@ -13,4 +15,4 @@ const layout = (props) => (
     </Aux>
 );
 
-export default layout;
+export default Layout;
