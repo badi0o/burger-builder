@@ -5,15 +5,15 @@
   outline: none;
   cursor: pointer;
   font: inherit;
-  padding: 10px;
-  margin: 10px;
+
+  margin: 20px 20px 20px 0;
   font-weight: bold;
 }
 
-.Button:first-of-type {
+/* .Button:first-of-type {
   margin-left: 0;
   padding-left: 0;
-}
+} */
 
 .Success {
   color: #5c9210;
