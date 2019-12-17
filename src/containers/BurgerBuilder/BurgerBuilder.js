@@ -34,7 +34,7 @@ class BurgerBuilder extends Component {
       });
   }
 
-  updatePuchaseState(ingredients) {
+  updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map(igKey => {
         return ingredients[igKey];
@@ -57,7 +57,7 @@ class BurgerBuilder extends Component {
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddtition;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
-    this.updatePuchaseState(updatedIngredients);
+    this.updatePurchaseState(updatedIngredients);
   };
 
   removeIngredientHandler = type => {
@@ -72,7 +72,7 @@ class BurgerBuilder extends Component {
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDeduction;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
-    this.updatePuchaseState(updatedIngredients);
+    this.updatePurchaseState(updatedIngredients);
   };
 
   purchaseHandler = () => {
@@ -84,32 +84,19 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-
     // alert("you continue");
-
-    this.setState({ loading: true })
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice.toFixed(2),
-      customer: {
-        name: 'Helo Belo',
-        address: {
-          street: 'teststreet',
-          zipCode: '430290',
-          country: 'Kurdistan'
-        },
-        email: 'test@tes.com'
-      },
-      deliveryMethod: 'fastest'
+    //
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
     }
-    axios.post('/orders.json', order)
-      .then(response => {
-        console.log(response)
-        this.setState({ loading: false, purchasing: false })
-      })
-      .catch(error => {
-        this.setState({ loading: false, purchasing: false })
-      });
+    queryParams.push('price=' + this.state.totalPrice.toFixed(2));
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+
+    });
   };
   render() {
     const disableInfo = {
