@@ -22,9 +22,35 @@ const order = (props) => {
             }}
         >{ig.name} ({ig.amount}) </span>
     })
+
+    // const data = { ...props.orderData };
+    // const dataOutput = [];
+    // console.log(data);
+    // for (let key in data) {
+    //     dataOutput.push(
+    //         {
+    //             name: key,
+    //             value: props.orderData[key]
+    //         }
+    //     );
+    // }
+    // console.log(dataOutput);
+    // const dataOutput1 = dataOutput.map(ig => {
+
+    //     return <span key={ig.name}
+    //         style={{
+    //             textTransform: "capitalize",
+    //             display: 'block',
+    //             margin: '3px 8px',
+    //             padding: '5px'
+    //         }}
+    //     >{ig.name}:  {ig.value} </span>
+    // })
+
     return (
         <div className={classes.Order}>
             <p>Ingrdients: {ingredientOutput}</p>
+            {/* <p>Contact Information: {dataOutput1}</p> */}
             <p>Price: <strong>USD{props.price}</strong></p>
         </div>)
 };
